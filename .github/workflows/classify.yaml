@@ -10,9 +10,9 @@ jobs:
     if: github.actor != 'renovate[bot]'
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions-ecosystem/action-remove-labels@v1
+      - uses: actions-ecosystem/action-remove-labels@2ce5d41b4b6aa8503e285553f75ed56e0a40bae0 # v1
         with:
           labels: |
             kind/api-change
@@ -26,7 +26,7 @@ jobs:
             kind/flake
             kind/regression
 
-      - uses: actions-ecosystem/action-regex-match@v2
+      - uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b # v2
         id: regex-match
         with:
           text: ${{ github.event.pull_request.body }}
@@ -51,6 +51,6 @@ jobs:
             please add /kind [type] to the body of the PR"
             exit 1
           fi
-      - uses: actions-ecosystem/action-add-labels@v1
+      - uses: actions-ecosystem/action-add-labels@18f1af5e3544586314bbe15c0273249c770b2daf # v1
         with:
           labels: kind/${{ steps.regex-match.outputs.group1 }}
